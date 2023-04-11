@@ -2,6 +2,8 @@
 
 Custom calendar with events and views monthly and weekly.
 
+![photo_2023-04-11_14-26-02](https://user-images.githubusercontent.com/48102250/231156498-23772ea4-657f-4cb0-9570-4f972d7e3eb0.jpg)
+
 # Firstly need:
 
 *make order with scss
