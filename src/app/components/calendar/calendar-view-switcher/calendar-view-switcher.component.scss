@@ -1,0 +1,26 @@
+.view-switch {
+	display: flex;
+	justify-content: center;
+
+	.view-switch-btn {
+		background-color: white;
+		border: none;
+		padding: 0.5rem 1rem;
+		/* font-size: inherit; */
+		cursor: pointer;
+		border: none;
+		padding: 15px 25px;
+		margin: 0 5px;
+		&.active {
+			background-color: darkorange;
+			span {
+				color: #fff;
+			}
+		}
+		span {
+			color: #373c4f;
+			font-size: 20px;
+			font-weight: 800;
+		}
+	}
+}

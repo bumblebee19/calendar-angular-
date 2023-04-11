@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="left">
+		<div class="calendar">
+			<app-calendar-header [viewDate]="viewDate" [view]="viewMode"
+				(viewDateChange)="onViewDateChange($event)"></app-calendar-header>
+			<app-calendar-view-month [events]="events" [viewDate]="viewDate"
+				*ngIf="viewMode === 'month'"></app-calendar-view-month>
+			<app-calendar-view-week [events]="events" [viewDate]="viewDate"
+				*ngIf="viewMode === 'week'"></app-calendar-view-week>
+		</div>
+	</div>
+	<div class="right">
+		<app-calendar-view-switcher [view]="viewMode"
+			(viewChange)="onViewModeChange($event)"></app-calendar-view-switcher>
+		<div class="today-date">
+			<div class="event-day">{{viewDate | date:'EEEE'}}</div>
+			<div class="event-date">{{viewDate | date:'dd MMMM yyyy'}}</div>
+		</div>
+		<div class="events">
+			<app-event-list></app-event-list>
+		</div>
+
+	</div>
+</div>

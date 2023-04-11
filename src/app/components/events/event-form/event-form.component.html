@@ -1,0 +1,39 @@
+<div class="event-form">
+	<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<label for="title">Назва події:</label>
+			<input type="text" class="form-control" id="title" formControlName="title" required>
+		</div>
+		<div class="form-group">
+			<label for="startDateTime">Start Date Time:</label>
+			<input type="datetime-local" class="form-control" id="startDateTime" formControlName="startDateTime" required>
+		</div>
+		<div class="form-group">
+			<label for="endDateTime">End Date Time:</label>
+			<input type="datetime-local" class="form-control" id="endDateTime" formControlName="endDateTime" required>
+		</div>
+		<div class="form-group">
+			<label for="type">Type events:</label>
+			<select class="form-control" id="type" formControlName="type">
+				<option *ngFor="let type of eventTypes" [value]="type">{{type}}</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="repeat">Repeat:</label>
+			<select id="repeat" formControlName="repeat">
+				<option value="none">None</option>
+				<option value="daily">Daily</option>
+				<option value="weekly">Weekly</option>
+				<option value="monthly">Monthly</option>
+				<option value="yearly">Yearly</option>
+			</select>
+		</div>
+		<div *ngIf="eventForm.get('repeat')!.value !== 'none'">
+			<label for="frequency">Frequency:</label>
+			<input type="number" id="frequency" formControlName="frequency" required>
+		</div>
+		<button type="submit" [disabled]="!eventForm.valid" class="btn btn-primary">
+			<span>Зберегти</span>
+		</button>
+	</form>
+</div>

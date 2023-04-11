@@ -1,0 +1,18 @@
+<div class="calendar-header">
+	<div class="calendar-header-button">
+		<button (click)="getTodayDay()">
+			<span>Today</span>
+		</button>
+	</div>
+	<div class="calendar-header-month">
+		<button (click)="decrementMonth()">
+			<mat-icon>keyboard_arrow_left</mat-icon>
+		</button>
+		<div class="calendar-header-date">
+			<h2>{{ view === 'month' ? (viewDate | date:'MMMM y') : ('Week of ' + (viewDate | date:'MMM d, y'))}}</h2>
+		</div>
+		<button (click)="incrementMonth()">
+			<mat-icon>keyboard_arrow_right</mat-icon>
+		</button>
+	</div>
+</div>

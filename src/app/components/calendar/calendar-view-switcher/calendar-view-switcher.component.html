@@ -1,0 +1,8 @@
+<div class="view-switch">
+	<button class="view-switch-btn" [ngClass]="{ 'active': view === 'month' }" (click)="changeView('month')">
+		<span>Month</span>
+	</button>
+	<button class="view-switch-btn" [ngClass]="{ 'active': view === 'week' }" (click)="changeView('week')">
+		<span>Week</span>
+	</button>
+</div>

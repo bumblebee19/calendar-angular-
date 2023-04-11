@@ -1,0 +1,29 @@
+<div *ngIf="events.length">
+	<div class="event-list">
+		<div class="event" *ngFor="let event of events">
+			<div class="event-title">
+				<h2>{{ event.title }}</h2>
+				<div class="event-dates">
+					<span>{{ event.startDateTime | date : "dd-MMMM HH:mm" }} - {{ event.endDateTime |date :
+						"d-MMMM HH:mm" }}</span>
+				</div>
+			</div>
+			<div class="event-actions">
+				<button class="add-event-btn" (click)="onDeleteEvent(event)">
+					<mat-icon>delete</mat-icon>
+				</button>
+				<button class="add-event-btn" (click)="onEditEvent(event)">
+					<mat-icon>edit</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="no-event" *ngIf="!events.length">
+	<p>No events to show.</p>
+</div>
+<div class="add-event-footer">
+	<button class="add-event-btn" (click)="onCreateEvent()">
+		<mat-icon>add</mat-icon>
+	</button>
+</div>

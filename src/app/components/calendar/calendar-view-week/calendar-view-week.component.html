@@ -1,0 +1,34 @@
+<div class="week-view">
+	<div class="weekday-column">
+		<div class="weekday-header">
+			<div class="weekday-row" *ngFor="let day of days">
+				<div class="weekday-cell" (click)="selectDay(day)">
+					{{ day | date: 'EEE, MMM d' }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="calendar-grid">
+		<div class="hour-columns">
+			<div class="hour-row" *ngFor="let hour of hours">
+				<div class="hour-cell">{{ hour }}:00</div>
+			</div>
+
+		</div>
+		<div class="event-cells">
+			<div class="event-row" *ngFor="let hour of hours">
+				<div class="event-cell" *ngFor="let day of days">
+					<ul class="calendar-week-view-events">
+						<li class="calendar-week-view-event" *ngFor="let event of getEventsOfDayAndHour(day, hour)">
+							<div class="calendar-week-view-event-title">
+								<span class="event">
+									{{ event.title }}
+								</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
