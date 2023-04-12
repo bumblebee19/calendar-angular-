@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import * as moment from 'moment';
 import { Week } from 'src/app/interfaces/calendar';
 import { ScheduleEvent } from 'src/app/interfaces/events';
@@ -13,6 +13,7 @@ export class CalendarViewMonthComponent {
 
   @Input() viewDate!: Date;
   @Input() events!: ScheduleEvent[];
+  @Output() viewDateChange = new EventEmitter<Date>();
   public calendar!: Week[];
 
   constructor(private dateService: DateService) { }
@@ -46,7 +47,8 @@ export class CalendarViewMonthComponent {
 
 
   public selectDay(day: moment.Moment): void {
-    this.dateService.changeDate(day);
+    this.viewDate = day.toDate();
+    this.viewDateChange.emit(this.viewDate);
   }
 
 }

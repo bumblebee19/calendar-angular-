@@ -3,10 +3,10 @@
 		<div class="calendar">
 			<app-calendar-header [viewDate]="viewDate" [view]="viewMode"
 				(viewDateChange)="onViewDateChange($event)"></app-calendar-header>
-			<app-calendar-view-month [events]="events" [viewDate]="viewDate"
-				*ngIf="viewMode === 'month'"></app-calendar-view-month>
-			<app-calendar-view-week [events]="events" [viewDate]="viewDate"
-				*ngIf="viewMode == 'week'"></app-calendar-view-week>
+			<app-calendar-view-month [events]="events" [viewDate]="viewDate" *ngIf="viewMode === 'month'"
+				(viewDateChange)="onViewDateChange($event)"></app-calendar-view-month>
+			<app-calendar-view-week [events]="events" [viewDate]="viewDate" *ngIf="viewMode == 'week'"
+				(viewDateChange)="onViewDateChange($event)"></app-calendar-view-week>
 		</div>
 	</div>
 	<div class="right">
