@@ -19,6 +19,7 @@
 			justify-content: space-around;
 			padding-left: 60px;
 			background-color: #b38add;
+			opacity: 0.8;
 			color: #fff;
 			.weekday-row {
 				display: flex;
@@ -31,6 +32,10 @@
 				// width: 130px;
 				border-bottom: 1px solid #ccc;
 				cursor: pointer;
+				&:hover {
+					color: #410a79;
+					opacity: 1;
+				}
 			}
 		}
 	}
