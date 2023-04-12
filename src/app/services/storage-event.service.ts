@@ -27,7 +27,6 @@ export class StorageEventService {
   }
 
   public addEvent(event: ScheduleEvent): void {
-    this.getAllEvents().subscribe(event => this.events = event);
     this.events.push(event);
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.events));
     this.eventsSubject.next(this.events);
