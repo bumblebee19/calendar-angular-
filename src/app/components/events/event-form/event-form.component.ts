@@ -40,7 +40,6 @@ export class EventFormComponent {
   public onSubmit(): void {
     const event: ScheduleEvent = this.eventForm.value;
     this.createEvent(event);
-    console.log(this.events);
     this.dialogRef.close(this.events);
   }
 
@@ -81,7 +80,6 @@ export class EventFormComponent {
   }
 
   private createNewEvent(event: ScheduleEvent, start: Date, end: Date): ScheduleEvent {
-    console.log(event, "func");
     return {
       title: event.title, startDateTime: new Date(start), endDateTime: new Date(end),
       type: event.type, repeat: event.repeat, frequency: event.frequency
