@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ScheduleEvent } from 'src/app/interfaces/events';
 import * as moment from 'moment';
-import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'app-calendar-view-week',
@@ -17,11 +16,11 @@ export class CalendarViewWeekComponent {
   public days: Date[] = [];
   public hours: number[] = [];
 
-  constructor(private dateService: DateService) {
-  }
+  constructor() { }
 
   ngOnChanges() {
     this.generateDays();
+    this.viewDateChange.emit(this.viewDate)
   }
 
   private generateDays(): void {

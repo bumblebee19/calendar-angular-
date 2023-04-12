@@ -21,6 +21,9 @@ export class CalendarViewMonthComponent {
   ngOnInit() {
     this.dateService.date.subscribe(this.generateMonth.bind(this));
   }
+  ngOnChanges() {
+    this.viewDateChange.emit(this.viewDate);
+  }
 
   private generateMonth(now: moment.Moment): void {
     const startDay = now.clone().startOf('month').startOf('week')

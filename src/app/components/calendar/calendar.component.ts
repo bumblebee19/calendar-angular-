@@ -19,6 +19,10 @@ export class CalendarComponent {
 
 
   constructor(private eventService: StorageEventService, private dateService: DateService) {
+    this.refreshEvents();
+  }
+
+  private refreshEvents(): void {
     this.eventService.getAllEvents().subscribe(event => this.events = event);
   }
 
@@ -29,6 +33,10 @@ export class CalendarComponent {
   public onViewDateChange(viewDate: Date): void {
     this.viewDate = viewDate;
     this.dateService.changeDate(moment(viewDate));
+  }
+
+  public onEventCreated(newEvent: string): void {
+    this.refreshEvents();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { switchMap } from 'rxjs';
 import { ScheduleEvent } from 'src/app/interfaces/events';
@@ -15,6 +15,7 @@ export class EventListComponent {
 
   @Input() events!: ScheduleEvent[];
   public filteredEvents: ScheduleEvent[] = [];
+  @Output() eventCreated = new EventEmitter<string>();
 
   constructor(private eventService: StorageEventService, public dateService: DateService, public dialog: MatDialog) {
 
@@ -30,11 +31,7 @@ export class EventListComponent {
 
   public onDeleteEvent(event: ScheduleEvent): void {
     this.eventService.deleteEvent(event);
-    this.dateService.date.pipe(
-      switchMap(value => this.eventService.getEventsFilteredByDay(value))
-    ).subscribe((tasks: ScheduleEvent[]) => {
-      this.events = tasks;
-    });
+    this.eventCreated.emit('deleted');
   }
 
   public onEditEvent(event: ScheduleEvent): void {
@@ -52,11 +49,7 @@ export class EventListComponent {
         } else {
           this.eventService.updateEvent(event, result);
         }
-        this.dateService.date.pipe(
-          switchMap(value => this.eventService.getEventsFilteredByDay(value))
-        ).subscribe((tasks: ScheduleEvent[]) => {
-          this.events = tasks;
-        })
+        this.eventCreated.emit('updated');
       }
     });
   }
@@ -76,12 +69,8 @@ export class EventListComponent {
         } else {
           this.eventService.addEvent(result)
         }
+        this.eventCreated.emit('created');
       }
-      this.dateService.date.pipe(
-        switchMap(value => this.eventService.getEventsFilteredByDay(value))
-      ).subscribe((tasks: ScheduleEvent[]) => {
-        this.events = tasks;
-      })
     });
   }
 
