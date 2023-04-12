@@ -1,23 +1,29 @@
-table {
-	width: 90%;
-	margin: 10px auto;
+.calendar-month-view {
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
 	border-collapse: collapse;
-
-	thead tr {
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+	.week-names {
 		background-color: #b38add;
 		color: #fff;
 	}
 
-	td,
-	th {
-		border: 1px solid #000;
-		padding: 0.5rem 1rem;
-	}
-
-	td {
+	.col {
+		flex-basis: 0;
+		flex-grow: 1;
+		flex-shrink: 1;
 		text-align: center;
 		transition: all 0.2s;
-		padding: 15px 26px;
+		width: 100px;
+		height: 60px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid darkgrey !important;
 		&.disabled {
 			opacity: 0.5;
 		}
@@ -26,29 +32,44 @@ table {
 			background-color: #b38add;
 			cursor: pointer;
 		}
-		.event {
-			padding: 1px 4px;
-			/* margin-top: 8px; */
-			background-color: #b38add;
-			border-radius: 10px;
+		&:hover span {
 			color: #fff;
-			overflow-wrap: break-word;
-			display: block;
-			width: 50px;
-			margin: 0 auto;
+		}
+		&:hover .event {
+			background-color: #fff;
+		}
+		&:hover .event span {
+			color: #b38add;
+		}
+		.cell {
+			span {
+				font-size: 18px;
+			}
+			.event {
+				padding: 1px 4px;
+				margin: 5px auto 0px;
+				background-color: #b38add;
+				border-radius: 10px;
+				color: #fff;
+				overflow-wrap: break-word;
+				display: block;
+				width: 50px;
+				margin: 0 auto;
+				transition: all 0.5s;
+				span {
+					font-size: 14px;
+				}
+			}
 		}
 	}
+}
 
-	td:hover span {
-		color: #fff;
-	}
-	.active {
-		color: #fff;
-		background-color: #b38add;
-	}
+.active {
+	color: #fff;
+	background-color: #b38add;
+}
 
-	.selected {
-		color: #fff;
-		background-color: #b38add;
-	}
+.selected {
+	color: #fff;
+	background-color: #b38add;
 }
