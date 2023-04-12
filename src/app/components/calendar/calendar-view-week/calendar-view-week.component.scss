@@ -1,7 +1,37 @@
 .week-view {
 	overflow: auto;
-	height: 100%;
-	max-height: 65vh;
+	/* height: 100%; */
+	max-height: 56vh;
+	margin: 10px;
+	.weekday-column {
+		// display: flex;
+		// flex-direction: column;
+		// justify-content: flex-start;
+		// align-items: center;
+		// width: 60px;
+		// width: 98%;
+		.weekday-header {
+			/* height: 60px; */
+			display: flex;
+			width: 98%;
+			justify-content: space-around;
+			padding-left: 60px;
+			background-color: #b38add;
+			color: #fff;
+			.weekday-row {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				height: 50px;
+				width: 90px;
+				// width: 100%;
+				// width: 130px;
+				border-bottom: 1px solid #ccc;
+				cursor: pointer;
+			}
+		}
+	}
 }
 .calendar-grid {
 	display: flex;
@@ -35,7 +65,8 @@
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-			height: 60px;
+			// height: 60px;
+			height: 45px;
 			width: 100%;
 			border-right: 1px solid #ccc;
 			border-bottom: 1px solid #ccc;
@@ -59,67 +90,36 @@
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: stretch;
-			height: 60px;
+			// height: 60px;
+			height: 45px;
 			width: 100%;
 			border-bottom: 1px solid #ccc;
 
 			.event-cell {
 				display: flex;
 				flex-direction: column;
-				justify-content: flex-start;
-				align-items: stretch;
+				justify-content: center;
 				flex-grow: 1;
 				width: 100%;
 				// width: 130px;
 				border-right: 1px solid #ccc;
+
+				li {
+					list-style: none;
+				}
+				.event {
+					padding: 1px 4px;
+					/* margin-top: 8px; */
+					background-color: #b38add;
+					border-radius: 10px;
+					color: #fff;
+					overflow-wrap: break-word;
+					display: block;
+					width: 50px;
+					margin: 0 auto;
+					text-align: center;
+				}
 			}
 		}
 	}
-}
-.weekday-column {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	width: 60px;
-	width: 98%;
-}
-
-.weekday-row {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	height: 60px;
-	width: 90px;
-	// width: 100%;
-	// width: 130px;
-	border-bottom: 1px solid #ccc;
-	cursor: pointer;
-}
-
-.weekday-header {
-	/* height: 60px; */
-	display: flex;
-	width: 98%;
-	justify-content: space-around;
-	padding-left: 60px;
-	background-color: #b38add;
-	color: #fff;
-}
-
-li {
-	list-style: none;
-}
-.event {
-	padding: 1px 4px;
-	/* margin-top: 8px; */
-	background-color: #b38add;
-	border-radius: 10px;
-	color: #fff;
-	overflow-wrap: break-word;
-	display: block;
-	width: 50px;
-	margin: 0 auto;
-	text-align: center;
 }

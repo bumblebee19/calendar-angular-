@@ -6,7 +6,7 @@
 			<app-calendar-view-month [events]="events" [viewDate]="viewDate"
 				*ngIf="viewMode === 'month'"></app-calendar-view-month>
 			<app-calendar-view-week [events]="events" [viewDate]="viewDate"
-				*ngIf="viewMode === 'week'"></app-calendar-view-week>
+				*ngIf="viewMode == 'week'"></app-calendar-view-week>
 		</div>
 	</div>
 	<div class="right">
