@@ -17,9 +17,8 @@ export class EventListComponent {
   public filteredEvents: ScheduleEvent[] = [];
   @Output() eventCreated = new EventEmitter<string>();
 
-  constructor(private eventService: StorageEventService, public dateService: DateService, public dialog: MatDialog) {
-
-  }
+  constructor(private eventService: StorageEventService, public dateService: DateService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.dateService.date.pipe(
