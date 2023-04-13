@@ -37,7 +37,7 @@ export class EventListComponent {
   public onEditEvent(event: ScheduleEvent): void {
     const dialogRef = this.dialog.open(EventFormComponent, {
       width: '400px',
-      height: '550px',
+      height: '600px',
       data: { event }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -57,7 +57,7 @@ export class EventListComponent {
   public onCreateEvent(): void {
     const dialogRef = this.dialog.open(EventFormComponent, {
       width: '400px',
-      height: '550px',
+      height: '600px',
       data: {}
     });
     dialogRef.afterClosed().subscribe(result => {

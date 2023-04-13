@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ScheduleEvent } from 'src/app/interfaces/events';
@@ -10,9 +10,18 @@ import { ScheduleEvent } from 'src/app/interfaces/events';
 })
 export class EventFormComponent {
 
-  public eventTypes: string[] = ['Робочий', 'Вихідний'];
   public eventForm!: FormGroup;
   public events: ScheduleEvent[] = [];
+
+  public eventTypes: string[] = ['Workday', 'Day off'];
+  public recurrenceDays: Array<{ value: string; name: string }> = [
+    { value: 'none', name: 'None' },
+    { value: 'daily', name: 'Daily' },
+    { value: 'weekly', name: 'Weekly' },
+    { value: 'monthly', name: 'Monthly' },
+    { value: 'yearly', name: 'Yearly' },
+  ];
+  public minDate: Date = new Date();
 
   constructor(public dialogRef: MatDialogRef<EventFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { event: ScheduleEvent }, private fb: FormBuilder) {
