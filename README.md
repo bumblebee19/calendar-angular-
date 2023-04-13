@@ -2,15 +2,10 @@
 
 Custom calendar with events and views monthly and weekly.
 
-![photo_2023-04-11_14-26-02](https://user-images.githubusercontent.com/48102250/231156498-23772ea4-657f-4cb0-9570-4f972d7e3eb0.jpg)
-
-# Firstly need fix now:
-
-*make order with scss
-
-*fix bug refresh action on monthly view after change event
-
-*fix bug click on cell day change title time
-
+<div>
+<img src="https://user-images.githubusercontent.com/48102250/231398186-4638c325-9ff8-4f58-9a85-78c8fb089d59.jpg" height="250" width="50%" style="margin: 0 auto">
+<img src="https://user-images.githubusercontent.com/48102250/231399564-a9263231-fe1e-4550-ac74-92fbc070e67f.jpg" height="250" width="50%" style="margin: 0 auto">
+<img src="https://user-images.githubusercontent.com/48102250/231399599-6612449f-112a-45fe-9467-0ee71247c464.jpg" height="250" width="50%" style="margin: 0 auto">
+</div>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
