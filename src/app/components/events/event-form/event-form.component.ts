@@ -18,8 +18,7 @@ export class EventFormComponent {
     { value: 'none', name: 'None' },
     { value: 'daily', name: 'Daily' },
     { value: 'weekly', name: 'Weekly' },
-    { value: 'monthly', name: 'Monthly' },
-    { value: 'yearly', name: 'Yearly' },
+    { value: 'monthly', name: 'Monthly' }
   ];
   public minDate: Date = new Date();
 
@@ -54,39 +53,43 @@ export class EventFormComponent {
 
   private createEvent(event: ScheduleEvent): void {
     this.events = [];
+
     const start = new Date(event.startDateTime);
     const end = new Date(event.endDateTime);
-    if (event.repeat === 'daily') {
-      for (let i = 0; i < event.frequency; i++) {
-        const newEvent = this.createNewEvent(event, start, end);
-        this.events.push(newEvent);
-        start.setDate(start.getDate() + 1);
-        end.setDate(end.getDate() + 1);
-        event.startDateTime = new Date(start);
-        event.endDateTime = new Date(end);
-      }
-    } else if (event.repeat === 'weekly') {
-      for (let i = 0; i < event.frequency; i++) {
-        const newEvent = this.createNewEvent(event, start, end);
-        this.events.push(newEvent);
-        start.setDate(start.getDate() + 7);
-        end.setDate(end.getDate() + 7);
-        event.startDateTime = new Date(start);
-        event.endDateTime = new Date(end);
-      }
-    } else if (event.repeat === 'monthly') {
-      for (let i = 0; i < event.frequency; i++) {
-        const newEvent = this.createNewEvent(event, start, end);
-        this.events.push(newEvent);
-        start.setMonth(start.getMonth() + 1);
-        end.setMonth(end.getMonth() + 1);
-        event.startDateTime = new Date(start);
-        event.endDateTime = new Date(end);
-      }
-    } else {
-      this.events.push(event);
+    const incrementEvents = this.getIncrementEvents(event.repeat);
+
+    for (let i = 0; i < event.frequency; i++) {
+      const newEvent = this.createNewEvent(event, start, end);
+      this.events.push(newEvent);
+
+      incrementEvents(start, end);
+      event.startDateTime = new Date(start);
+      event.endDateTime = new Date(end);
     }
   }
+
+  private getIncrementEvents(repeat: string): (start: Date, end: Date) => void {
+    switch (repeat) {
+      case 'daily':
+        return (start, end) => {
+          start.setDate(start.getDate() + 1);
+          end.setDate(end.getDate() + 1);
+        };
+      case 'weekly':
+        return (start, end) => {
+          start.setDate(start.getDate() + 7);
+          end.setDate(end.getDate() + 7);
+        };
+      case 'monthly':
+        return (start, end) => {
+          start.setMonth(start.getMonth() + 1);
+          end.setMonth(end.getMonth() + 1);
+        };
+      default:
+        return () => { };
+    }
+  }
+
 
   private createNewEvent(event: ScheduleEvent, start: Date, end: Date): ScheduleEvent {
     return {
@@ -94,4 +97,5 @@ export class EventFormComponent {
       type: event.type, repeat: event.repeat, frequency: event.frequency
     };
   }
+
 }
