@@ -47,7 +47,6 @@ export class CalendarViewMonthComponent {
     this.calendar = calendar;
   }
 
-
   public selectDay(day: moment.Moment): void {
     this.viewDate = day.toDate();
     this.viewDateChange.emit(this.viewDate);
