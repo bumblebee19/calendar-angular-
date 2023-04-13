@@ -34,14 +34,13 @@ export class CalendarViewMonthComponent {
       calendar.push({
         days: Array(7).fill(0).map(() => {
           const value = date.add(1, 'day').clone();
-          const active = moment().isSame(value, 'date');
           const disabled = !now.isSame(value, 'month');
           const selected = now.isSame(value, 'date');
           const events = this.events.filter(event => {
             return (moment(value).format("YYYY-MM-DD") >= moment(event.startDateTime).format("YYYY-MM-DD")
               && moment(event.endDateTime).format("YYYY-MM-DD") >= moment(value).format("YYYY-MM-DD"))
           });
-          return { value, active, disabled, selected, events }
+          return { value, disabled, selected, events }
         })
       })
     }

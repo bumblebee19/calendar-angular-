@@ -24,19 +24,28 @@ export class CalendarViewWeekComponent {
   }
 
   private generateDays(): void {
+    this.hours = this.createHoursArray();
+    this.days = this.createDaysArray();
+  }
+
+  private createHoursArray(): number[] {
+    const hours: number[] = [];
+    for (let i = 0; i < 24; i++) {
+      hours.push(i);
+    }
+    return hours;
+  }
+
+  private createDaysArray(): Date[] {
     const days: Date[] = [];
-    this.hours = [];
     const startOfWeek = new Date(this.viewDate);
     startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay());
-    for (let i = 0; i < 24; i++) {
-      this.hours.push(i);
-    }
     for (let i = 0; i < 7; i++) {
       const day = new Date(startOfWeek);
       day.setDate(day.getDate() + i);
       days.push(day);
     }
-    this.days = days;
+    return days;
   }
 
   public getEventsOfDayAndHour(dayDate: Date, hour: number): ScheduleEvent[] {
